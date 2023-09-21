@@ -15,13 +15,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_20_065952) do
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "post_id"
-    t.string "text"
+    t.bigint "author_id_id"
+    t.bigint "post_id_id"
+    t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_comments_on_post_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
+    t.index ["author_id_id"], name: "index_comments_on_author_id_id"
+    t.index ["post_id_id"], name: "index_comments_on_post_id_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -53,4 +53,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_20_065952) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "comments", "posts", column: "post_id_id"
+  add_foreign_key "comments", "users", column: "author_id_id"
 end
