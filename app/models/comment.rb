@@ -1,17 +1,10 @@
 class Comment < ApplicationRecord
-  # Associations
   belongs_to :author, class_name: 'User'
-  belongs_to :post, class_name: 'Post'
+  belongs_to :post
 
-  # Attributes
-  attribute :text, :text
+  after_save :comment_counter_updates
 
-  # Callbacks
-  after_create :update_post_comments_counter
-  after_destroy :update_post_comments_counter
-
-  # Methods
-  def update_post_comments_counter
-    post.update(comments_counter: post.comments.count)
+  def comment_counter_updates
+    post.increment!(:comments_counter)
   end
 end
