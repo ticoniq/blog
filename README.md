@@ -28,7 +28,7 @@
 
 # 📖 Blog App <a name="about-project"></a>
 
-> This is a blog app based on ruby on rails. This app shows the list of posts and empower readers to interact with them by adding comments and liking posts.
+> This is a blog app based on ruby on rails. This app will feature users, posts, comments, likes.
 
 ## 🛠 Built With <a name="built-with"></a>
 <h2> Tech Stack </h2>
@@ -39,13 +39,13 @@
 
 ### Key Features <a name="key-features"></a>
 
-- save users
+- Display Users
 
-- save user's posts
+- Display posts
 
-- save posts' comments
+- Display comments on posts
 
-- save posts' likes
+- Display likes on posts
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -71,8 +71,8 @@ Example command:
 Clone this repository to your desired folder:
 
 ```sh
-  git clone https://github.com/olanikegloria/blog.git
-  cd blog
+  cd my-folder
+  git clone https://github.com/salimer/Blog-App.git
 ```
 
 ### Usage
@@ -80,8 +80,6 @@ Clone this repository to your desired folder:
 To run the project, execute the following command:
 
 ```sh
-  create database 'blog_development'
-  rails db:migrate 
   rails s
 ```
 
@@ -99,9 +97,9 @@ To run tests, run the following command:
 
 ## 👥 Authors <a name="authors"></a>
 
-👤 **olanike olatunji**
+👤 **Salim Bamahfoodh**
 
-- GitHub: [@olanikegloria](https://github.com/olanikegloria)
+- GitHub: [@salimer](https://github.com/salimer)
 <!-- - LinkedIn: [username](link) -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

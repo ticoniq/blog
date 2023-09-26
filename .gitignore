@@ -6,6 +6,10 @@
 
 # Ignore bundler config.
 /.bundle
+.history/
+node_modules/
+pervious/
+/pervious
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -29,5 +33,3 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-node_modules/
-old/
