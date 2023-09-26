@@ -97,10 +97,6 @@ To run tests, run the following command:
 
 ## 👥 Authors <a name="authors"></a>
 
-👤 **Salim Bamahfoodh**
-
-- GitHub: [@salimer](https://github.com/salimer)
-<!-- - LinkedIn: [username](link) -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
