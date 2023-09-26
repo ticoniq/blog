@@ -8,8 +8,7 @@
 /.bundle
 .history/
 node_modules/
-pervious/
-/pervious
+old/
 
 # Ignore all logfiles and tempfiles.
 /log/*
