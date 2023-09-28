@@ -3,7 +3,6 @@
 # 📗 Table of Contents
 
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 Decode Morse Code ](#-decode-morse-code-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
@@ -37,7 +36,8 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **Decode a Morse Code Message**
+- **Add new user**
+- **Add new post**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -122,7 +122,7 @@ Tests are not available yet. -->
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **Decode Longer Messages**
+- [ ] **Add GUI**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -138,7 +138,7 @@ Feel free to check the [issues page](../../issues/).
 
 ## ⭐️ Show your support <a name="support"></a>
 
-If you like this project...
+Thanks to all Microverse community
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
