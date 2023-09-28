@@ -1,24 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe 'PostsController', type: :request do
-  let(:user) { User.create(name: 'Test User') }
-  let(:post) { Post.create(author: user, title: 'Test Post') }
+  let(:user) { User.create(name: 'John Doe', posts_counter: 0) }
+  let(:post) { Post.create(title: 'Post with Comments', author: user, comments_counter: 0, likes_counter: 0) }
 
-  describe 'GET /index' do
-    before do
+  describe 'GET /users/:user_id/posts' do
+    it 'renders the index template with correct placeholder text' do
       get user_posts_path(user)
-    end
-
-    context 'renders the index template' do
-      it 'response status is correct' do
-        expect(response).to have_http_status(200)
-      end
-      it 'correct template is rendered' do
-        expect(response).to render_template(:index)
-      end
-      it 'the response body includes correct placeholder text' do
-        expect(response.body).to include('Posts')
-      end
+      expect(response).to have_http_status(:success)
+      expect(response).to render_template('posts/index')
+      expect(response.body).to include('List of Posts')
     end
   end
 
@@ -31,11 +22,14 @@ RSpec.describe 'PostsController', type: :request do
       it 'response status is correct' do
         expect(response).to have_http_status(200)
       end
+
       it 'correct template is rendered' do
         expect(response).to render_template(:show)
       end
+
       it 'the response body includes correct placeholder text' do
-        expect(response.body).to include('Post number')
+        expect(response.body).to include('Title: Sample Post')
+        expect(response.body).to include('Content: This is a sample post.')
       end
     end
   end

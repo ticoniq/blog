@@ -1,23 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe 'UsersController', type: :request do
-  let(:user) { User.create(name: 'Test User') }
+  let(:user) { User.create(name: 'John Doe', posts_counter: 0) }
 
-  describe 'GET /index' do
-    before do
+  describe 'GET /users' do
+    it 'renders the index template with correct placeholder text' do
       get users_path
-    end
-
-    context 'renders the index template' do
-      it 'response status is correct' do
-        expect(response).to have_http_status(200)
-      end
-      it 'correct template is rendered' do
-        expect(response).to render_template(:index)
-      end
-      it 'the response body includes correct placeholder text' do
-        expect(response.body).to include('Users')
-      end
+      expect(response).to have_http_status(:success)
+      expect(response).to render_template('users/index')
+      expect(response.body).to include('List of Users')
     end
   end
 
@@ -27,14 +18,14 @@ RSpec.describe 'UsersController', type: :request do
     end
 
     context 'renders the show template' do
-      it 'response status is correct' do
-        expect(response).to have_http_status(200)
-      end
       it 'correct template is rendered' do
         expect(response).to render_template(:show)
       end
+      it 'response status is correct' do
+        expect(response).to have_http_status(200)
+      end
       it 'the response body includes correct placeholder text' do
-        expect(response.body).to include('Test User')
+        expect(response.body).to include('User (1) Details')
       end
     end
   end

@@ -1,17 +1,13 @@
 class Comment < ApplicationRecord
-  # Associations
-  belongs_to :author, class_name: 'User'
-  belongs_to :post, class_name: 'Post'
+  belongs_to :author, class_name: 'User', foreign_key: 'user_id'
+  belongs_to :post
 
-  # Attributes
-  attribute :text, :text
-
-  # Callbacks
-  after_create :update_post_comments_counter
-  after_destroy :update_post_comments_counter
-
-  # Methods
-  def update_post_comments_counter
+  def comment_counter_updates
     post.update(comments_counter: post.comments.count)
   end
+
+  default_scope { order(created_at: :desc) }
+
+  after_create :comment_counter_updates
+  after_destroy :comment_counter_updates
 end
