@@ -6,13 +6,14 @@
 
 # Ignore bundler config.
 /.bundle
+/newold/
+/newold
 
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-newold/
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
 !/tmp/pids/
