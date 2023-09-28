@@ -27,17 +27,21 @@
 **The Blog app is designed to serve as a typical blog website. It aims to deliver a complete and operational web platform where users can explore a catalog of articles and engage with them through actions like leaving comments and expressing their appreciation by liking posts..
 
 ## 🛠 Built With <a name="built-with"></a>
+<h2> Tech Stack </h2>
+- Ruby on Rails
+- PSQL
 
-### Tech Stack <a name="tech-stack"></a>
-
-
-- **Ruby**
-
+<!-- Features -->
 
 ### Key Features <a name="key-features"></a>
 
-- **Add new user**
-- **Add new post**
+- Display Users
+
+- Display posts
+
+- Display comments on posts
+
+- Display likes on posts
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
