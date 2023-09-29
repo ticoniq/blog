@@ -1,2 +1,30 @@
-<h1><%= @user.name %></h1>
-
+<div class="w-3/4 mx-auto flex flex-col">
+  <div href="" class="flex items-center mb-2">
+    <div class="h-20 w-20 border-2 border-black m-4"><%= image_tag(@user.photo) %> </div>
+    <div class="w-2/4 text-4xl flex flex-col border-2 border-black p-2">
+      <p><%= @user.name %></p>
+      <p class="text-sm text-right">Number of posts <%= @user.posts_counter %></p>
+    </div>
+  </div>
+  <div class="flex flex-col border-2 border-black p-2 w-3/5 mb-9">
+    <h5 class="mb-2">Bio</h5>
+    <p>
+      <%= @user.bio %>
+    </p>
+  </div>
+  <div class="flex flex-col w-3/5">
+    <% @user.latest_posts.each_with_index do |post, index| %>
+      <div  class="flex flex-col border-2 border-black p-2 mb-2">
+        <h5 class="mb-2">Post #<%= post.id%></h5>
+        <p> <%= post.title %></p>
+        <p class="mb-2"><%= post.text %></p>
+        <div class="flex w-full flex-row-reverse">
+          <p>Likes: <%= post.likes_counter %></p>
+          <p class="mr-2">Comments: <%= post.comments_counter %></p>
+        </div>
+      </div>
+    <% end %>
+    <a href="<%= user_posts_path(@user) %>"
+ class="border-2 border-black w-28 mx-auto mt-2">see all posts</a>
+  </div>
+</div>

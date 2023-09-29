@@ -1,2 +1,23 @@
-<h1>Post number <%= @post.id %> of User <%= @user.name %> </h1>
-<li><%= @post.title %></li>
+<div class=" w-2/4 mx-auto flex flex-col
+">
+  <div class="border-2 border-black p-2 
+
+">
+    <h3 class="mb-6">Post #<%= @post.id %> by <%= @user.name%></h3>
+    <p>
+      <%= @post.text %>
+      <div class="flex w-full flex-row-reverse">
+        <p>Likes: <%= @post.likes_counter %></p>
+        <p class="mr-2">Comments: <%= @post.comments_counter %></p>
+      </div>
+    </p>
+  </div>
+  <div class="border-2 border-black p-2
+">
+    <h3 class="mb-6">Comments</h3>
+    <% @post.comments.each do |comment| %>
+      <p><span class="font-bold
+"><%= comment.author.name%></span>: <%= comment.text%></p>
+    <%end%>
+  </div>
+</div>
