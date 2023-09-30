@@ -12,8 +12,23 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex items-center justify-center">
+    <header class="sticky inset-x-0 top-0 z-50 bg-teal-700 text-white">
+      <nav class="flex items-center justify-between py-4 max-w-custom mx-auto px-5" aria-label="Global">
+        <div class="flex lg:flex-1">
+          <span class="font-semibold md:font-bold text-lg md:text-xl"><%= link_to 'Blog', users_path %></span>
+        </div>
+        <div class="flex gap-x-16 items-center">
+          <%= link_to 'Home', users_path %>
+        </div>
+      </nav>
+    </header>
+    <main class="max-w-custom mx-auto">
       <%= yield %>
     </main>
+    <footer class="sticky inset-x-0 top-0 z-50 bg-teal-700 text-white">
+      <span class="flex items-center justify-center item center py-4 max-w-custom mx-auto px-5" aria-label="Global">
+        <p>Copyright © 2023 Blog App. <%= link_to 'Blog', users_path %></p>
+      </span>
+    </footer>
   </body>
 </html>
