@@ -20,6 +20,9 @@
         </a>
       </div>
     <% end %>
+    <div class="col-md-12">
+      <a href="<%= user_posts_path(@user) %>" class="btn btn-primary col-2 mt-3" >See all posts</a>
+    </div>
     <% else %>
       <p>No posts yet</p>
     <% end %>

@@ -37,4 +37,24 @@ RSpec.feature 'User Post Index Page' do
 
     expect(page).to have_css('.pagination')
   end
+
+  scenario 'Clicking post title goes to post show page' do
+    post = Post.create(title: 'Test Post', author: user)
+  
+    visit user_posts_path(user)
+    
+    click_link post.title
+  
+    expect(current_path).to eq user_post_path(user, post)
+  end
+  
+  scenario 'Clicking post body goes to post show page' do
+    post = Post.create(title: 'Test Post', author: user)
+  
+    visit user_posts_path(user)
+  
+    click_link post.text
+  
+    expect(current_path).to eq user_post_path(user, post)
+  end
 end
