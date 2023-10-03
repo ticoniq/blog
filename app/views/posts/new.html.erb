@@ -1,0 +1,16 @@
+<div class="flex flex-col">
+<h1>Create a New Post</h1>
+<%# <%= render 'shared/errors', object: @post %> 
+<%= form_with model: [@user, @post] do |f| %>
+  <div class="flex flex-col mb-4">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.label :text %>
+    <%= f.text_area :text %>
+  </div>
+  <div class="border-2 border-sky-500 w-28 p-2 bg-cyan-500">
+    <%= f.submit "Create Post" %>
+  </div>
+<% end %>
+<%= link_to 'Back', user_posts_path(@user) %>
+</div>
