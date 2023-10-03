@@ -1,58 +1,71 @@
+<a name="readme-top"></a>
 
+<div align="center">
 
-# 📗 Table of Contents
+  <h1><b>Blog App (Ruby on Rails)</b></h1>
 
-- [📗 Table of Contents](#-table-of-contents)
+</div>
+
+<!-- TABLE OF CONTENTS -->
+
+## 📗 Table of Contents
+
+- [📖 Blog App ](#-blog-app-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
-  - [🚀 Live Demo ](#-live-demo-)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
     - [Install](#install)
     - [Usage](#usage)
-    - [Run tests](#run-tests)
-    - [Deployment](#deployment)
-  - [👥 Authors ](#-authors-)
+  - [👥 Author ](#-author-)
   - [🔭 Future Features ](#-future-features-)
   - [🤝 Contributing ](#-contributing-)
   - [⭐️ Show your support ](#️-show-your-support-)
   - [🙏 Acknowledgments ](#-acknowledgments-)
   - [📝 License ](#-license-)
 
+<!-- PROJECT DESCRIPTION -->
 
-# 📖 Blog <a name="about-project"></a>
+# 📖 Blog App <a name="about-project"></a>
 
-**The Blog app is designed to serve as a typical blog website. It aims to deliver a complete and operational web platform where users can explore a catalog of articles and engage with them through actions like leaving comments and expressing their appreciation by liking posts..
+**Blog App** is an blog app which the user can write posts, comments and like on posts.
 
 ## 🛠 Built With <a name="built-with"></a>
-<h2> Tech Stack </h2>
-- Ruby on Rails
-- PSQL
+
+### Tech Stack <a name="tech-stack"></a>
+
+<details>
+  <summary>Server</summary>
+    <li><a href="https://www.ruby-lang.org/en/">Ruby</a></li>
+    <li><a href="https://rubyonrails.org/">Rails</a></li>
+</details>
+<details>
+  <summary>Database</summary>
+    <li><a href="https://www.postgresql.org/">Postgres</a></li>
+</details>
 
 <!-- Features -->
 
 ### Key Features <a name="key-features"></a>
 
-- Display Users
-
-- Display posts
-
-- Display comments on posts
-
-- Display likes on posts
+- **Built using Ruby on Rails**
+- **Write Posts**
+- **Likes on Posts**
+- **Comments on Posts**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- LIVE DEMO
 
-<!-- ## 🚀 Live Demo <a name="live-demo"></a>
+## 🚀 Live Demo <a name="live-demo"></a>
 
-
-- Live Demo is not available yet
+- [Live Demo Link]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
+<!-- GETTING STARTED -->
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
@@ -60,76 +73,108 @@ To get a local copy up and running, follow these steps.
 
 ### Prerequisites
 
-In order to run this project you need to install tuby and rails:
+In order to run this project you need:
 
-
-Example command:
-
-```sh
- gem install ruby
 ```
-
+    ruby >= 3.2.0
+    rails >= 7.0
+    postgres >- 15.3
+```
 
 ### Setup
 
 Clone this repository to your desired folder:
 
-
-Example commands:
-
-```sh
-  git clone git@github.com:/ticoniq/blog.git
+```bash
+  git clone https://github.com/batoolfatima2135/Blog-app.git
 ```
--
+
+You need to setup database for these project
+
+```
+  development = blog_app_development
+  test        = blog_app_test
+  production  = blog_app_production
+```
+
+or you can use your own database and change the `config/database.yml`
+
+```yml
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: [your_username]
+  password: [your_password]
+  host: localhost
+
+development:
+  <<: *default
+  database: [your_database_for_development]
+
+test:
+  <<: *default
+  database: [your_database_for_test]
+
+production:
+  <<: *default
+  database: [your_database_for_production]
+```
 
 ### Install
 
 Install this project with:
 
-
-Example command:
-
-```sh
-  cd blog
+```bash
+  cd gemstone-blog
+  bundle install
 ```
--
+
+it will install the required gemfile for running the project
 
 ### Usage
 
-To run the project, execute the following command:
+to use this project:
 
-
-Example command:
-
-```sh
-  rails s
+```ruby
+   rails s
 ```
 
-<!-- ### Run tests
+it will run the the server on `localhost:3000`
 
-Tests are not available yet. -->
+<!-- ### Test
 
+to run test in these this project:
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+```ruby
+   rspec
+```
 
+it will run the all the unit test of these project
 
-## 👥 Authors <a name="authors"></a>
-
-👤 **Okolie Tochukwu**
-
-- GitHub: [@ticoniq](https://github.com/ticoniq)
-- Twitter: [@ticoniq_](https://twitter.com/ticoniq_)
-- LinkedIn: [ticoniq](https://linkedin.com/in/ticoniq)
+ -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## 👥 Author <a name="author"></a>
+
+👤 **Batool Fatima**
+
+- GitHub: [@githubhandle](https://github.com/batoolfatima2135)
+- Twitter: [@twitterhandle](https://twitter.com/batool2135)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/batool-fatima-515531196/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **Add GUI**
+- **Add Authentication**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- CONTRIBUTING -->
 
 ## 🤝 Contributing <a name="contributing"></a>
 
@@ -139,20 +184,23 @@ Feel free to check the [issues page](../../issues/).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- SUPPORT -->
 
 ## ⭐️ Show your support <a name="support"></a>
 
-Thanks to all Microverse community
+If you like this project you can share this project to your friend
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- ACKNOWLEDGEMENTS -->
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I would like to thank Microverse for the chance to become a software developer.
+I would like to thank microverse for this project
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- LICENSE -->
 
 ## 📝 License <a name="license"></a>
 

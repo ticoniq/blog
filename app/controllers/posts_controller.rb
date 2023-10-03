@@ -1,63 +1,37 @@
 class PostsController < ApplicationController
-  before_action :set_user
-  before_action :set_post, only: [:show]
-
-  def index
-    @posts = @user.posts
-    respond_to do |format|
-      format.html
-      format.json { render json: @posts }
-    end
-  end
-
   def show
-    respond_to do |format|
-      format.html
-      format.json { render json: @post }
-    end
+    @post = Post.find(params[:id])
+    @index = params[:index]
+    @user = current_user
   end
 
   def new
-    @post = current_user.posts.build
+    @user = current_user
+    @post = Post.new
+    respond_to do |format|
+      format.html { render :new }
+    end
   end
 
   def create
-    @post = current_user.posts.build(post_params)
+    @post = Post.new(post_params)
+    @post.user = current_user
     if @post.save
-      redirect_to user_path(current_user), notice: 'Post was successfully created.'
+      redirect_to user_posts_path(id: current_user.id)
     else
-      puts @post.errors.full_messages
+      flash.now[:alert] = 'Cannot create a new post'
       render :new
     end
   end
 
-  def like
+  def index
     @user = User.find(params[:user_id])
-    @post = @user.posts.find(params[:id])
-
-    @like = @post.likes.new
-    @like.author = current_user
-
-    if @like.save
-      flash[:notice] = 'Post liked successfully.'
-    else
-      flash[:alert] = 'Failed to like the post.'
-    end
-
-    redirect_to user_post_path(@user, @post)
-  end
-
-  def post_params
-    params.require(:post).permit(:title, :text, :comments_counter, :likes_counter)
+    @posts = Post.where(author_id: @user.id).includes(:comments, :user).paginate(page: params[:page], per_page: 10)
   end
 
   private
 
-  def set_user
-    @user = User.find(params[:user_id])
-  end
-
-  def set_post
-    @post = @user.posts.find(params[:id])
+  def post_params
+    params.require(:post).permit(:title, :text)
   end
 end

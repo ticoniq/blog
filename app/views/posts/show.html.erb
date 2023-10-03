@@ -1,31 +1,33 @@
-<div class=" w-2/4 mx-auto flex flex-col
-">
-  <div class="border-2 border-black p-2 
-
-">
-    <h3 class="mb-6">Post #<%= @post.id %> by <%= @user.name%></h3>
-    <p>
-      <%= @post.text %>
-      <div class="flex w-full flex-row-reverse items-center">
-        <%= button_to like_user_post_path(@user, @post), method: :post, remote: true, class: 'like-button' do %>
-          <i class="fa fa-heart" style="color: red;" aria-hidden="true"></i>
-        <% end %>
-        <p class="mr-2">Likes: <%= @post.likes_counter %></p>
-        <p class="mr-2">Comments: <%= @post.comments_counter %></p>
-      </div>
-    </p>
-  </div>
-  <div class="border-2 border-black p-2
-">
-    <div class="flex items-center" style="justify-content: space-between; ">
-      <h3 class="mb-6">Comments</h3>
-      <a class="border-2 border-black p-2" href="<%= new_user_post_comment_path(@user, @post) %>">
-        Add a comment
-      </a>
+<div class="row mx-lg-4 m-md-3 m-lg-2 m-1 justify-content-center align-items-center ">
+  <div class="col-lg-8 col-md-11 col-11 border p-lg-2 p-1">
+    <div class="d-flex justify-content-between">
+      <h5><%= @post.title %> by <%=  @post.user.name %></h5>
+      <p>Comments: <%= @post.comments_counter %> , Likes:  <%= @post.likes_counter %></p>
     </div>
-    <% @post.comments.each do |comment| %>
-      <p><span class="font-bold
-"><%= comment.author.name%></span>: <%= comment.text%></p>
-    <%end%>
+    
+    <br>
+    <p><%= @post.text %></p>
   </div>
+</div>
+<div class="row mx-lg-4 mx-md-3 mx-lg-2 mx-1 justify-content-center align-items-center ">
+  <div class="col-lg-8 col-md-11 col-11 border p-lg-2 p-1">
+     <%= render 'shared/like_form', post: @post, user: @user %>
+    <%= render 'shared/comment_form', post: @post, user: @user %>
+   
+    <div class="my-3">
+       
+       <% if @post.comments.any? %>
+    <% @post.comments.each do |comment| %>
+
+      <% if comment.user %>
+      <p><%= comment.user.name %>: <%= comment.text %></p>
+      <% end %>
+    <% end %>
+    <% else %>
+      <p>No comments yet</p>
+    <% end %>
+    </div>
+   
+  </div>
+ 
 </div>

@@ -1,13 +1,12 @@
 class Comment < ApplicationRecord
-  belongs_to :author, class_name: 'User', foreign_key: 'user_id'
   belongs_to :post
+  belongs_to :user
 
-  def comment_counter_updates
+  after_save :update_post_comment_counter
+
+  private
+
+  def update_post_comment_counter
     post.update(comments_counter: post.comments.count)
   end
-
-  default_scope { order(created_at: :desc) }
-
-  after_create :comment_counter_updates
-  after_destroy :comment_counter_updates
 end
