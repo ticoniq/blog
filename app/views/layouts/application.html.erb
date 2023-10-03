@@ -33,6 +33,9 @@
     </nav>
   </header>
   <main class="container my-5">
+    <%if notice %>
+      <%= render 'layouts/alert' %>
+    <%end%>
     <%= yield %>
   </main>
   
