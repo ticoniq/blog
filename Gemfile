@@ -1,17 +1,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.2.2'
-
-gem 'rspec'
-
-gem 'faker'
-
-gem 'rails-controller-testing'
-
-gem 'rspec-rails'
-# add rubocop
 gem 'rubocop', '>= 1.0', '< 2.0'
+
+ruby '3.2.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.8'
@@ -38,7 +30,7 @@ gem 'stimulus-rails'
 gem 'jbuilder'
 
 # Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 4.0'
+# gem "redis", "~> 4.0"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -61,6 +53,9 @@ gem 'bootsnap', require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'faker'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -79,7 +74,5 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
 end
-
-gem 'tailwindcss-rails', '~> 2.0'
-
-gem 'font-awesome-rails'
+gem 'pry-rails', group: %i[development test]
+gem 'will_paginate'

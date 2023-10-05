@@ -1,39 +1,31 @@
-<div class="w-3/4 mx-auto flex flex-col">
- <a href="<%= new_user_post_path(@user, @post) %>" class="border-2 border-black w-34 mx-auto mb-2 p-2 
-">Create a new post</a>
+<%= render "shared/user", user: @user %>
 
-  <div href="" class="flex items-center mb-2">
-    <div class="h-20 w-20 border-2 border-black m-4"><%= image_tag(@user.photo) %> </div>
-    <div class="w-2/4 text-4xl flex flex-col border-2 border-black p-2">
-      <p><%= @user.name %></p>
-      <p class="text-sm text-right">Number of posts <%= @user.posts_counter %></p>
-    </div>
-  </div>
-  <div class="flex flex-col border-2 border-black p-2 w-3/5 mb-9">
-    <h5 class="mb-2">Bio</h5>
-    <p>
-      <%= @user.bio %>
-    </p>
-  </div>
-  <div class="flex flex-col w-3/5">
-    <% @posts.each_with_index do |post, index| %>
-      <a href="<%= user_post_path(@user, post) %>"
-       class="flex flex-col border-2 border-black p-2 mb-2">
-        <h5 class="mb-2">Post #<%= post.id %></h5>
-        <p> <%= post.title %></p>
-        <p class="mb-2"><%= post.text %></p>
-        <div class="flex w-full flex-row-reverse">
-          <p>Likes: <%= post.likes_counter %></p>
-          <p class="mr-2">Comments: <%= post.comments_counter %></p>
+<div class="row mb-2">
+  <% if @posts.any? %>
+  <% @posts.includes(:user ,comments: :user).each_with_index do |post, index| %>
+    <div class="col-md-6">
+      <a href="<%= user_post_path(@user, post)%>?index=<%= index + 1 %>" class="text-decoration-none">
+        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <%= render "shared/post", post: post, post_index: index + 1 %>
+            <a href="<%= user_post_path(@user, post)%>?index=<%= index + 1 %>" class="stretched-link">Continue reading</a>
+          </div>
         </div>
       </a>
-      <div class="border-2 border-black p-2 mb-2">
-        <% post.latest_comments.each do |comment| %>
-          <p><span class="font-bold"><%= comment.author.name%></span>: <%= comment.text%></p>
-        <% end %>
-      </div>
-      <div>
-      <% end %>
-      <button class="border-2 border-black w-28 mx-auto mt-2">Pagination</button>
     </div>
+  <% end %>
+  <% else %>
+    <p>No posts yet</p>
+  <% end %>
+</div>
+
+
+ 
+<div class="row justify-content-center align-items-center my-1">
+
+  <div class=" col-2">
+    <%= will_paginate @posts %>
   </div>
+
+</div>
+

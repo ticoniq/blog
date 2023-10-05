@@ -1,19 +1,12 @@
-    <section>
-      <div class="">
-        <div className="grid grid-cols-1 space-y-10 md:gap-12 md:space-y-0 md:grid-cols-2">
-          <% @users.each do |user| %>
-            <div>
-              <a href="<%= user_path(user) %>" class="flex items-center mb-2">  
-                <div class="h-20 w-20 border-2 border-black m-4"><%= image_tag(user.photo) %> </div>
-                <div class="w-2/4 text-4xl flex flex-col border-2 border-black p-2">
-                  <p><%= user.name %></p>
-                  <p class="text-sm text-right">Number of posts <%= user.posts_counter %><p>
-                </div>
-              </a>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </section>
+ <% if @users.any? %>
+ <%= link_to "Add a new post", new_user_post_path(user_id: @user.id), class: "btn btn-primary btn-block my-5"%>
+ <% end %>
+<% if @users.any? %>
+  <% @users.each do |user| %>
     
+    <%= render "shared/user", user: user  %>
 
+    <% end %>
+<% else %>
+    <h1 class="text-center m-auto">No users yet</h1>
+<% end %>

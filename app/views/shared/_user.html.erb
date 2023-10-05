@@ -1,0 +1,15 @@
+<a href="<%= user_path(user) %>" class="text-decoration-none">
+  <div class="row mb-2">
+    <div class="col-md-12">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <h1 class="mb-0"><%= user.name %></h1>
+          <a href="<%= user_path(user) %>" class="stretched-link my-5">View user</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <img src="<%= user.photo %>"  alt="photo" class="bd-placeholder-img" width="200" height="250"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>

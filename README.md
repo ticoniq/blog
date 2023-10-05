@@ -121,6 +121,11 @@ Tests are not available yet. -->
 - Twitter: [@ticoniq_](https://twitter.com/ticoniq_)
 - LinkedIn: [ticoniq](https://linkedin.com/in/ticoniq)
 
+👤 **Oumaima Nejjari**
+
+- GitHub: [@aima98](https://github.com/aima98)
+- LinkedIn: [Oumaima Nejjari](https://www.linkedin.com/in/oumaimanejjari)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 

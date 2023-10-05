@@ -1,36 +1,47 @@
 require 'rails_helper'
 
-RSpec.describe 'PostsController', type: :request do
-  let(:user) { User.create(name: 'John Doe', posts_counter: 0) }
-  let(:post) { Post.create(title: 'Post with Comments', author: user, comments_counter: 0, likes_counter: 0) }
+RSpec.describe 'Posts', type: :request do
+  let(:valid_attributes) do
+    {
+      name: 'Mark'
+    }
+  end
 
-  describe 'GET /users/:user_id/posts' do
-    it 'renders the index template with correct placeholder text' do
-      get user_posts_path(user)
-      expect(response).to have_http_status(:success)
-      expect(response).to render_template('posts/index')
-      expect(response.body).to include('List of Posts')
+  describe 'GET /index' do
+    before :each do
+      @user = User.create! valid_attributes
+      get user_posts_path(@user)
+    end
+    it 'returns a successful response' do
+      expect(response).to be_successful
+    end
+
+    it 'renders the index template' do
+      expect(response).to render_template(:index)
+    end
+
+    it 'includes correct placeholder text in the response body' do
+      expect(response.body).to include('Number of posts')
     end
   end
 
-  describe 'GET #show' do
-    before do
-      get user_post_path(user, post)
+  describe 'GET /show' do
+    before :each do
+      @user = User.create! valid_attributes
+      @post = @user.posts.create(title: 'Test post')
+      get user_post_path(@user, @post)
     end
 
-    context 'renders the show template' do
-      it 'response status is correct' do
-        expect(response).to have_http_status(200)
-      end
+    it 'returns a successful response' do
+      expect(response).to be_successful
+    end
 
-      it 'correct template is rendered' do
-        expect(response).to render_template(:show)
-      end
+    it 'renders correct template' do
+      expect(response).to render_template(:show)
+    end
 
-      it 'the response body includes correct placeholder text' do
-        expect(response.body).to include('Title: Sample Post')
-        expect(response.body).to include('Content: This is a sample post.')
-      end
+    it 'includes correct placeholder text in the response body' do
+      expect(response.body).to include('Comments')
     end
   end
 end
