@@ -1,0 +1,16 @@
+<% if user_signed_in? %>
+ <% if @users.any? %>
+  <%= link_to "Add a new post", new_user_post_path(user_id: @user.id), class: "btn btn-primary btn-block my-5"%>
+  <% end %>
+  <% if @users.any? %>
+    <% @users.each do |user| %>
+      
+      <%= render "shared/user", user: user  %>
+
+      <% end %>
+  <% else %>
+      <h1 class="text-center m-auto">No users yet</h1>
+  <% end %>
+<% else %>
+  <h1>Hello World</h1>
+<% end %>

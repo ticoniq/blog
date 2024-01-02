@@ -1,0 +1,29 @@
+<%= render "shared/user", user: @user  %>
+  <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+    <div class="col-md-6 px-0">
+      <h1 class="display-4 font-italic">User Bio</h1>
+      <p class="lead my-3"><%= @user.bio %></p>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <% if @user.posts.any? %>
+    <% @user.posts.each_with_index do |post, index| %>
+      <div class="col-md-6">
+        <a href="<%= user_post_path(@user, post) %>" class="text-decoration-none">
+          <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+              <%= render "shared/post", post: post, post_index: index + 1 %>
+              <a href="<%= user_post_path(@user, post) %>" class="stretched-link">Continue reading</a>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% end %>
+    <div class="col-md-12">
+      <a href="<%= user_posts_path(@user) %>" class="btn btn-primary col-2 mt-3" >See all posts</a>
+    </div>
+    <% else %>
+      <p>No posts yet</p>
+    <% end %>
+  </div>

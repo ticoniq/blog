@@ -1,0 +1,31 @@
+<%= render "shared/user", user: @user %>
+
+<div class="row mb-2">
+  <% if @posts.any? %>
+  <% @posts.includes(:user ,comments: :user).each_with_index do |post, index| %>
+    <div class="col-md-6">
+      <a href="<%= user_post_path(@user, post)%>?index=<%= index + 1 %>" class="text-decoration-none">
+        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <%= render "shared/post", post: post, post_index: index + 1 %>
+            <a href="<%= user_post_path(@user, post)%>?index=<%= index + 1 %>" class="stretched-link">Continue reading</a>
+          </div>
+        </div>
+      </a>
+    </div>
+  <% end %>
+  <% else %>
+    <p>No posts yet</p>
+  <% end %>
+</div>
+
+
+ 
+<div class="row justify-content-center align-items-center my-1">
+
+  <div class=" col-2">
+    <%= will_paginate @posts %>
+  </div>
+
+</div>
+
